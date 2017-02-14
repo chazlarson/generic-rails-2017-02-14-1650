@@ -3,6 +3,9 @@ AllCops:
     - bin/spring
     - db/migrate/*
     - db/schema.rb
+    - tmp/vulnerabilities/*
+    - tmp/vulnerabilities/lib/*
+    - tmp/vulnerabilities/spec/*
 
 Metrics/LineLength:
   Exclude:
