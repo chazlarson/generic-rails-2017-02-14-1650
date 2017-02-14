@@ -60,3 +60,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # END: initial gems
 ###################
 
+# BEGIN: gems used in test_code.sh script
+gem 'rubocop', require: false # Code style checking tool; not recommended for legacy apps
+
