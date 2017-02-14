@@ -100,3 +100,5 @@ gem 'email_munger' # Encodes email address to prevent harvesting by bots
 gem 'bootstrap-sass' # Bootstrap styling
 
 gem 'devise' # Provides admin/user authentication
+
+gem 'faker' # Generates fake data used for seeding the database

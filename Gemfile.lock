@@ -87,6 +87,8 @@ GEM
     email_munger (0.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     ffi (1.9.17)
     gems (0.8.3)
     gemsurance (0.7.0)
@@ -249,6 +251,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   email_munger
+  faker
   gemsurance
   jbuilder (~> 2.5)
   jquery-rails
