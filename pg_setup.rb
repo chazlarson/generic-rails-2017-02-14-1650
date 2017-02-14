@@ -104,4 +104,3 @@ puts
 # rubocop:enable Metrics/LineLength
 # rubocop:enable Style/PercentLiteralDelimiters
 # rubocop:enable Style/UnneededPercentQ
-
