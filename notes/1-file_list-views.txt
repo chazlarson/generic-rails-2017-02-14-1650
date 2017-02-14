@@ -36,13 +36,13 @@ config/routes.rb
 #             user_password PATCH  /users/password(.:format)          devise/passwords#update
 #                           PUT    /users/password(.:format)          devise/passwords#update
 #                           POST   /users/password(.:format)          devise/passwords#create
-#  cancel_user_registration GET    /users/cancel(.:format)            devise/registrations#cancel
-#     new_user_registration GET    /users/sign_up(.:format)           devise/registrations#new
-#    edit_user_registration GET    /users/edit(.:format)              devise/registrations#edit
-#         user_registration PATCH  /users(.:format)                   devise/registrations#update
-#                           PUT    /users(.:format)                   devise/registrations#update
-#                           DELETE /users(.:format)                   devise/registrations#destroy
-#                           POST   /users(.:format)                   devise/registrations#create
+#  cancel_user_registration GET    /users/cancel(.:format)            users/registrations#cancel
+#     new_user_registration GET    /users/sign_up(.:format)           users/registrations#new
+#    edit_user_registration GET    /users/edit(.:format)              users/registrations#edit
+#         user_registration PATCH  /users(.:format)                   users/registrations#update
+#                           PUT    /users(.:format)                   users/registrations#update
+#                           DELETE /users(.:format)                   users/registrations#destroy
+#                           POST   /users(.:format)                   users/registrations#create
 #     new_user_confirmation GET    /users/confirmation/new(.:format)  devise/confirmations#new
 #         user_confirmation GET    /users/confirmation(.:format)      devise/confirmations#show
 #                           POST   /users/confirmation(.:format)      devise/confirmations#create
@@ -57,7 +57,11 @@ config/routes.rb
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
   devise_for :admins
-  devise_for :users
+  # BEGIN: user section
+  devise_for :users,
+             controllers: { registrations: 'users/registrations' }
+  # END: user section
+
   # BEGIN: static pages
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
@@ -66,9 +70,10 @@ Rails.application.routes.draw do
 end
 ----------------
 test/integration
-└── static_pages_test.rb
+├── static_pages_test.rb
+└── users_signup_test.rb
 
-0 directories, 1 file
+0 directories, 2 files
 
 app/views
 ├── layouts
@@ -78,9 +83,29 @@ app/views
 │   ├── mailer.html.erb
 │   ├── mailer.text.erb
 │   └── _shim.html.erb
-└── static_pages
-    ├── about.html.erb
-    ├── contact.html.erb
-    └── home.html.erb
+├── static_pages
+│   ├── about.html.erb
+│   ├── contact.html.erb
+│   └── home.html.erb
+└── users
+    ├── confirmations
+    │   └── new.html.erb
+    ├── mailer
+    │   ├── confirmation_instructions.html.erb
+    │   ├── password_change.html.erb
+    │   ├── reset_password_instructions.html.erb
+    │   └── unlock_instructions.html.erb
+    ├── passwords
+    │   ├── edit.html.erb
+    │   └── new.html.erb
+    ├── registrations
+    │   ├── edit.html.erb
+    │   └── new.html.erb
+    ├── sessions
+    │   └── new.html.erb
+    ├── shared
+    │   └── _links.html.erb
+    └── unlocks
+        └── new.html.erb
 
-2 directories, 9 files
+10 directories, 21 files

@@ -31,4 +31,8 @@ Metrics/LineLength:
 Style/ClassAndModuleChildren:
   Exclude:
     - test/test_helper.rb
+    - app/controllers/users/*
 
+Style/CommentIndentation:
+  Exclude:
+    - app/controllers/users/*
