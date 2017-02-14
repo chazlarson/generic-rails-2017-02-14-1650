@@ -51,3 +51,11 @@ echo "$NAME"
 git config --global user.name "$NAME"
 echo
 
+echo '------------'
+echo 'heroku login'
+heroku login
+
+echo '---------------'
+echo 'heroku keys:add'
+heroku keys:add
+
