@@ -12,4 +12,3 @@ class Test1Test < ActionDispatch::IntegrationTest
     assert_match 'Welcome to public/index.html!', response.body
   end
 end
-
