@@ -4,6 +4,10 @@
 
 sh build_fast.sh
 
+echo '----------------------'
+echo 'bundle exec rubocop -D'
+bundle exec rubocop -D
+
 echo '----------'
 echo 'git status'
 git status
