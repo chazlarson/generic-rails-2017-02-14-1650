@@ -23,4 +23,3 @@ end
 DISABLED_TASKS.each do |task|
   Rake::Task[task].enhance ['db:guard_for_production']
 end
-
