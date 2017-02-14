@@ -102,3 +102,12 @@ gem 'bootstrap-sass' # Bootstrap styling
 gem 'devise' # Provides admin/user authentication
 
 gem 'faker' # Generates fake data used for seeding the database
+
+# BEGIN: gems used for setting up PostgreSQL in the development environment
+# You do not need these gems if you use SQLite in the development environment.
+# NOTE: Attempts to use "gem install" in the PostgreSQL setup scripts did not pan out.
+gem 'figaro'
+gem 'line_containing'
+gem 'remove_double_blank'
+gem 'string_in_file'
+# END: gems used for setting up PostgreSQL in the development environment
