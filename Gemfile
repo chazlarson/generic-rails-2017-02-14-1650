@@ -82,3 +82,7 @@ group :development, :testing do
   gem 'sandi_meter' # Checks for compliance with Sandi Metz' four rules
 end
 # END: gems used in test_code.sh script
+
+# Minitest
+gem 'minitest', require: :false, group: :testing
+gem 'minitest-reporters', require: :false, group: :testing # Adds special features to tests
