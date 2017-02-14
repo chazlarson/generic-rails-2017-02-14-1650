@@ -43,4 +43,3 @@ def teardown_universal
   Capybara.reset_sessions!
   Capybara.use_default_driver
 end
-
