@@ -20,8 +20,12 @@ gem 'rails'
 # END: gems that take a long time to install
 ############################################
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# BEGIN: SQLite
+# NOTE: This section is automatically deleted by the pg_setup.rb script
+group :development, :test do
+  gem 'sqlite3'
+end
+# END: SQLite
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
