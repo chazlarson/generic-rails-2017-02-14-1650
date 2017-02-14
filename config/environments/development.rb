@@ -56,4 +56,8 @@ Rails.application.configure do
   # Needed to avoid the error message:
   # ActionView::Template::Error: Missing host to link to!
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # From http://mailcatcher.me/
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
 end
