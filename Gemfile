@@ -86,3 +86,11 @@ end
 # Minitest
 gem 'minitest', require: :false, group: :testing
 gem 'minitest-reporters', require: :false, group: :testing # Adds special features to tests
+
+# BEGIN: Capybara (for integration testing)
+group :test do
+  gem 'capybara'
+  gem 'capybara-email'
+  gem 'capybara-slow_finder_errors'
+end
+# END: Capybara (for integration testing)
