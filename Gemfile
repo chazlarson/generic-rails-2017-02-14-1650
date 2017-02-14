@@ -119,3 +119,11 @@ group :development do
   gem 'rails-erd' # Generates block diagrams
 end
 # END: for outline.sh
+
+# BEGIN: Better Errors
+# Provides more and better information in error pages
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+# END: Better Errors
