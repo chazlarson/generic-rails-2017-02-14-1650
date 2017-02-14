@@ -26,6 +26,7 @@ Metrics/LineLength:
     - Rakefile
     - test/integration/*
     - test/test_helper.rb
+    - config/initializers/devise.rb
 
 Style/ClassAndModuleChildren:
   Exclude:
