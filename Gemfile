@@ -9,10 +9,23 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+##############################################
+# BEGIN: gems that take a long time to install
+##############################################
+# Please pre-install the proper versions in the Docker image.
+gem 'nokogiri', '1.7.0.1'
+gem 'pg', '0.18.4'
+gem 'rails', '5.0.1'
+############################################
+# END: gems that take a long time to install
+############################################
+
+# BEGIN: SQLite
+# NOTE: This section is automatically deleted by the pg_setup.rb script
+group :development, :test do
+  gem 'sqlite3'
+end
+# END: SQLite
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
