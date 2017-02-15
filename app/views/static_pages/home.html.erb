@@ -4,7 +4,25 @@
   <h1>Home</h1>
   Welcome to Generic App Template!
   <br><br>
-  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+  <% ######################### %>
+  <% # BEGIN: VARIABLE SECTION %>
+  <% ######################### %>
+  <% if user_signed_in? %>
+    <% ##################### %>
+    <% # BEGIN: USER SECTION %>
+    <% ##################### %>
+    You are logged in as a user (<%= current_user.username %>).
+    <% ################### %>
+    <% # END: USER SECTION %>
+    <% ################### %>
+  <% else %>
+    <div class="center jumbotron">
+      <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+    </div>
+  <% end %>
+  <% ####################### %>
+  <% # END: VARIABLE SECTION %>
+  <% ####################### %>
   <br><br>
   <%= link_to image_tag("rails.png", alt: "Rails logo"),
               'http://rubyonrails.org/' %>
