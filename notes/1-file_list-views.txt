@@ -15,13 +15,13 @@ config/routes.rb
 #            admin_password PATCH  /admins/password(.:format)         devise/passwords#update
 #                           PUT    /admins/password(.:format)         devise/passwords#update
 #                           POST   /admins/password(.:format)         devise/passwords#create
-# cancel_admin_registration GET    /admins/cancel(.:format)           devise/registrations#cancel
-#    new_admin_registration GET    /admins/sign_up(.:format)          devise/registrations#new
-#   edit_admin_registration GET    /admins/edit(.:format)             devise/registrations#edit
-#        admin_registration PATCH  /admins(.:format)                  devise/registrations#update
-#                           PUT    /admins(.:format)                  devise/registrations#update
-#                           DELETE /admins(.:format)                  devise/registrations#destroy
-#                           POST   /admins(.:format)                  devise/registrations#create
+# cancel_admin_registration GET    /admins/cancel(.:format)           admins/registrations#cancel
+#    new_admin_registration GET    /admins/sign_up(.:format)          admins/registrations#new
+#   edit_admin_registration GET    /admins/edit(.:format)             admins/registrations#edit
+#        admin_registration PATCH  /admins(.:format)                  admins/registrations#update
+#                           PUT    /admins(.:format)                  admins/registrations#update
+#                           DELETE /admins(.:format)                  admins/registrations#destroy
+#                           POST   /admins(.:format)                  admins/registrations#create
 #    new_admin_confirmation GET    /admins/confirmation/new(.:format) devise/confirmations#new
 #        admin_confirmation GET    /admins/confirmation(.:format)     devise/confirmations#show
 #                           POST   /admins/confirmation(.:format)     devise/confirmations#create
@@ -56,7 +56,11 @@ config/routes.rb
 
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  devise_for :admins
+  # BEGIN: admin
+  devise_for :admins,
+             controllers: { registrations: 'admins/registrations' }
+  # END: admin
+
   # BEGIN: user section
   devise_for :users,
              controllers: { registrations: 'users/registrations' }
@@ -68,14 +72,35 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   # END: static pages
 end
+
 ----------------
 test/integration
+├── admins_signup_test.rb
 ├── static_pages_test.rb
 └── users_signup_test.rb
 
-0 directories, 2 files
+0 directories, 3 files
 
 app/views
+├── admins
+│   ├── confirmations
+│   │   └── new.html.erb
+│   ├── mailer
+│   │   ├── confirmation_instructions.html.erb
+│   │   ├── password_change.html.erb
+│   │   ├── reset_password_instructions.html.erb
+│   │   └── unlock_instructions.html.erb
+│   ├── passwords
+│   │   ├── edit.html.erb
+│   │   └── new.html.erb
+│   ├── registrations
+│   │   └── edit.html.erb
+│   ├── sessions
+│   │   └── new.html.erb
+│   ├── shared
+│   │   └── _links.html.erb
+│   └── unlocks
+│       └── new.html.erb
 ├── layouts
 │   ├── application.html.erb
 │   ├── _footer.html.erb
@@ -108,4 +133,4 @@ app/views
     └── unlocks
         └── new.html.erb
 
-10 directories, 21 files
+18 directories, 32 files

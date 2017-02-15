@@ -7,6 +7,13 @@ test/controllers
 0 directories, 1 file
 
 app/controllers
+├── admins
+│   ├── confirmations_controller.rb
+│   ├── omniauth_callbacks_controller.rb
+│   ├── passwords_controller.rb
+│   ├── registrations_controller.rb
+│   ├── sessions_controller.rb
+│   └── unlocks_controller.rb
 ├── application_controller.rb
 ├── concerns
 ├── static_pages_controller.rb
@@ -18,4 +25,4 @@ app/controllers
     ├── sessions_controller.rb
     └── unlocks_controller.rb
 
-2 directories, 8 files
+3 directories, 14 files
