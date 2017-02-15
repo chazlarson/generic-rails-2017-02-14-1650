@@ -71,3 +71,16 @@ end
 # rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/ParameterLists
+
+def login_user(str_uname, str_pwd, status_remember)
+  visit root_path
+  click_on 'Login'
+  fill_in('Username', with: str_uname)
+  fill_in('Password', with: str_pwd)
+  if status_remember == true
+    check('Remember me')
+  else
+    uncheck('Remember me')
+  end
+  click_button('Log in')
+end
