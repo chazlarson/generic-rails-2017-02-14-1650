@@ -145,3 +145,9 @@ def xpath_input_str(str_input)
   output = "#{str1}#{str2}#{str3}"
   output
 end
+
+def edit_admin_start(admin1)
+  login_as(admin1, scope: :admin)
+  visit root_path
+  click_on 'Edit Settings'
+end
