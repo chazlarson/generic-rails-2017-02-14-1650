@@ -127,3 +127,5 @@ group :development do
   gem 'binding_of_caller'
 end
 # END: Better Errors
+
+gem 'timecop', group: :testing # Changes current time, needed for testing the lock duration

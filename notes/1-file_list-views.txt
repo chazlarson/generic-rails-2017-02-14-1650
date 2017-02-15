@@ -71,7 +71,7 @@ Rails.application.routes.draw do
                             passwords: 'users/passwords',
                             confirmations: 'users/confirmations' }
   # END: user section
-  
+
   # BEGIN: static pages
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
