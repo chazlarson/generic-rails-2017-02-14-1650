@@ -79,10 +79,11 @@ test/integration
 ├── admins_login_test.rb
 ├── admins_signup_test.rb
 ├── static_pages_test.rb
+├── users_edit_test.rb
 ├── users_login_test.rb
 └── users_signup_test.rb
 
-0 directories, 5 files
+0 directories, 6 files
 
 app/views
 ├── admins
