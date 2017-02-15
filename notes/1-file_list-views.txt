@@ -28,6 +28,9 @@ config/routes.rb
 #          new_admin_unlock GET    /admins/unlock/new(.:format)       admins/unlocks#new
 #              admin_unlock GET    /admins/unlock(.:format)           admins/unlocks#show
 #                           POST   /admins/unlock(.:format)           admins/unlocks#create
+#                    admins GET    /admins(.:format)                  admins#index
+#                     admin GET    /admins/:id(.:format)              admins#show
+#                           DELETE /admins/:id(.:format)              admins#destroy
 #          new_user_session GET    /users/sign_in(.:format)           users/sessions#new
 #              user_session POST   /users/sign_in(.:format)           users/sessions#create
 #      destroy_user_session DELETE /users/sign_out(.:format)          users/sessions#destroy
@@ -75,6 +78,7 @@ Rails.application.routes.draw do
                             passwords: 'admins/passwords',
                             confirmations: 'admins/confirmations',
                             unlocks: 'admins/unlocks' }
+  resources :admins, only: [:show, :index, :destroy]
   # END: admin
 
   # BEGIN: user section
@@ -98,11 +102,14 @@ Rails.application.routes.draw do
 end
 ----------------
 test/integration
+├── admins_delete_test.rb
 ├── admins_edit_test.rb
+├── admins_index_test.rb
 ├── admins_lock_test.rb
 ├── admins_login_test.rb
 ├── admins_password_reset_test.rb
 ├── admins_resend_conf_test.rb
+├── admins_show_test.rb
 ├── admins_signup_test.rb
 ├── static_pages_test.rb
 ├── users_delete_test.rb
@@ -115,12 +122,14 @@ test/integration
 ├── users_show_test.rb
 └── users_signup_test.rb
 
-0 directories, 16 files
+0 directories, 19 files
 
 app/views
 ├── admins
+│   ├── _admin.html.erb
 │   ├── confirmations
 │   │   └── new.html.erb
+│   ├── index.html.erb
 │   ├── mailer
 │   │   ├── confirmation_instructions.html.erb
 │   │   ├── password_change.html.erb
@@ -135,6 +144,7 @@ app/views
 │   │   └── new.html.erb
 │   ├── shared
 │   │   └── _links.html.erb
+│   ├── show.html.erb
 │   └── unlocks
 │       └── new.html.erb
 ├── layouts
@@ -173,4 +183,4 @@ app/views
     │   └── new.html.erb
     └── _user.html.erb
 
-18 directories, 36 files
+18 directories, 39 files
