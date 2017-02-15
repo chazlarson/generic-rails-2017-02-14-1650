@@ -1,3 +1,4 @@
+
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to "sample app", root_path, id: "logo" %>
@@ -9,17 +10,29 @@
         <%-# BEGIN: VARIABLE SECTION -%>
         <%-######################### -%>
         <% if user_signed_in? %>
-          <%-##################### -%>
-          <%-# BEGIN: USER SECTION -%>
-          <%-##################### -%>
-          <li>
-          <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+
+          <% ##################### %>
+          <% # BEGIN: USER SECTION %>
+          <% ##################### %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              User<br>Menu <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Edit Settings", edit_user_registration_path(current_user) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+              </li>
+            </ul>
           </li>
-          <%-################### -%>
-          <%-# END: USER SECTION -%>
-          <%-################### -%>
+          <% ################### %>
+          <% # END: USER SECTION %>
+          <% ################### %>
+
         </li>
         <% elsif admin_signed_in? %>
+
           <%-###################### -%>
           <%-# BEGIN: ADMIN SECTION -%>
           <%-###################### -%>
@@ -29,6 +42,7 @@
           <%-#################### -%>
           <%-# END: ADMIN SECTION -%>
           <%-#################### -%>
+
         <% else %>
           <li><%= link_to 'Login', new_user_session_path %></li>
         <% end %>

@@ -34,7 +34,12 @@ class ActionDispatch::IntegrationTest
   include Capybara::DSL
   include Capybara::Email::DSL
 
-  # Reset sessions and driver after each test
+  # Execute before each integration test
+  def setup
+    setup_universal
+  end
+
+  # Execute after each integration test
   def teardown
     teardown_universal
   end
@@ -42,6 +47,29 @@ end
 #####################
 # END: Capybara setup
 #####################
+
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/MethodLength
+# Assign variables to test fixtures
+# To be executed before each test
+def setup_universal
+  @a1 = admins(:elle_woods)
+  @a2 = admins(:vivian_kensington)
+  @a3 = admins(:emmett_richmond)
+  @a4 = admins(:paulette_bonafonte)
+  @a5 = admins(:professor_callahan)
+  @a6 = admins(:warner_huntington)
+
+  @u1 = users(:connery)
+  @u2 = users(:lazenby)
+  @u3 = users(:moore)
+  @u4 = users(:dalton)
+  @u5 = users(:brosnan)
+  @u6 = users(:craig)
+  @u7 = users(:blofeld)
+end
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/MethodLength
 
 def teardown_universal
   Capybara.reset_sessions!
@@ -100,3 +128,20 @@ def login_admin(str_uname, str_pwd, status_remember)
   click_button('Log in')
 end
 # rubocop:enable Metrics/MethodLength
+
+# Needed for using Devise tools in testing, such as login_as
+include Warden::Test::Helpers
+
+def edit_user_start(user1)
+  login_as(user1, scope: :user)
+  visit root_path
+  click_on 'Edit Settings'
+end
+
+def xpath_input_str(str_input)
+  str1 = './/input[@value="'
+  str2 = str_input
+  str3 = '"]'
+  output = "#{str1}#{str2}#{str3}"
+  output
+end
