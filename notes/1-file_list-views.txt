@@ -76,6 +76,7 @@ Rails.application.routes.draw do
 end
 ----------------
 test/integration
+├── admins_edit_test.rb
 ├── admins_login_test.rb
 ├── admins_signup_test.rb
 ├── static_pages_test.rb
@@ -83,7 +84,7 @@ test/integration
 ├── users_login_test.rb
 └── users_signup_test.rb
 
-0 directories, 6 files
+0 directories, 7 files
 
 app/views
 ├── admins
