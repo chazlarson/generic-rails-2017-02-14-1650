@@ -7,9 +7,9 @@ config/routes.rb
 # == Route Map
 #
 #                    Prefix Verb   URI Pattern                        Controller#Action
-#         new_admin_session GET    /admins/sign_in(.:format)          devise/sessions#new
-#             admin_session POST   /admins/sign_in(.:format)          devise/sessions#create
-#     destroy_admin_session DELETE /admins/sign_out(.:format)         devise/sessions#destroy
+#         new_admin_session GET    /admins/sign_in(.:format)          admins/sessions#new
+#             admin_session POST   /admins/sign_in(.:format)          admins/sessions#create
+#     destroy_admin_session DELETE /admins/sign_out(.:format)         admins/sessions#destroy
 #        new_admin_password GET    /admins/password/new(.:format)     devise/passwords#new
 #       edit_admin_password GET    /admins/password/edit(.:format)    devise/passwords#edit
 #            admin_password PATCH  /admins/password(.:format)         devise/passwords#update
@@ -58,7 +58,8 @@ config/routes.rb
 Rails.application.routes.draw do
   # BEGIN: admin
   devise_for :admins,
-             controllers: { registrations: 'admins/registrations' }
+             controllers: { registrations: 'admins/registrations',
+                            sessions: 'admins/sessions' }
   # END: admin
 
   # BEGIN: user section
@@ -75,12 +76,13 @@ Rails.application.routes.draw do
 end
 ----------------
 test/integration
+├── admins_login_test.rb
 ├── admins_signup_test.rb
 ├── static_pages_test.rb
 ├── users_login_test.rb
 └── users_signup_test.rb
 
-0 directories, 4 files
+0 directories, 5 files
 
 app/views
 ├── admins
