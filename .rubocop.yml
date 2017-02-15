@@ -32,7 +32,9 @@ Style/ClassAndModuleChildren:
   Exclude:
     - test/test_helper.rb
     - app/controllers/users/*
+    - app/controllers/admins/*
 
 Style/CommentIndentation:
   Exclude:
     - app/controllers/users/*
+    - app/controllers/admins/*
