@@ -185,3 +185,17 @@ input {
     color: #468847;
     text-align: left;
 }
+
+/* Users and admins indices */
+.users, .admins {
+  td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+  th {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+}
