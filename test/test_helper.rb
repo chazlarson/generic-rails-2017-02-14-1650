@@ -19,6 +19,26 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
+##############################
+# BEGIN: controller test setup
+##############################
+class ActionController::TestCase
+  include Devise::Test::ControllerHelpers
+
+  # Execute before each integration test
+  def setup
+    setup_universal
+  end
+
+  # Execute after each integration test
+  def teardown
+    teardown_universal
+  end
+end
+############################
+# END: controller test setup
+############################
+
 #######################
 # BEGIN: Capybara setup
 #######################

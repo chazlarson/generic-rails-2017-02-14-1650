@@ -43,6 +43,18 @@
 #           new_user_unlock GET    /users/unlock/new(.:format)        users/unlocks#new
 #               user_unlock GET    /users/unlock(.:format)            users/unlocks#show
 #                           POST   /users/unlock(.:format)            users/unlocks#create
+#                     users GET    /users(.:format)                   users#index
+#                      user GET    /users/:id(.:format)               users#show
+#                           DELETE /users/:id(.:format)               users#destroy
+#              search_users POST   /users/search(.:format)            users#index
+#                           GET    /users(.:format)                   users#index
+#                           POST   /users(.:format)                   users#create
+#                  new_user GET    /users/new(.:format)               users#new
+#                 edit_user GET    /users/:id/edit(.:format)          users#edit
+#                           GET    /users/:id(.:format)               users#show
+#                           PATCH  /users/:id(.:format)               users#update
+#                           PUT    /users/:id(.:format)               users#update
+#                           DELETE /users/:id(.:format)               users#destroy
 #                      root GET    /                                  static_pages#home
 #                     about GET    /about(.:format)                   static_pages#about
 #                   contact GET    /contact(.:format)                 static_pages#contact
@@ -66,6 +78,10 @@ Rails.application.routes.draw do
                             passwords: 'users/passwords',
                             confirmations: 'users/confirmations',
                             unlocks: 'users/unlocks' }
+  resources :users, only: [:show, :index, :destroy]
+  resources :users do
+    collection { post :search, to: 'users#index' }
+  end
   # END: user section
 
   # BEGIN: static pages

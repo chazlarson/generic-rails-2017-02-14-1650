@@ -29,6 +29,14 @@
 
 #
 class User < ApplicationRecord
+  # Specify the number of entries per page given use of the will_paginate gem
+  self.per_page = 50
+
+  # Limit the parameters available for searching the user database
+  RANSACKABLE_ATTRIBUTES = %w(email username last_name first_name).freeze
+  def self.ransackable_attributes(_auth_object = nil)
+    RANSACKABLE_ATTRIBUTES + _ransackers.keys
+  end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
